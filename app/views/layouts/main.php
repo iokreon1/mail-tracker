@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,42 +9,49 @@
     <link rel="shortcut icon" href="<?= BASEURL ?>/img/favicon.png">
     <!-- CSS -->
     <!-- General CSS Files -->
-     <link rel="stylesheet" href="<?= BASEURL ?>assets/modules/bootstrap/css/bootsrap.min.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= BASEURL ?>assets/modules/fontawesome/css/all.min.css">
 
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="<?= BASEURL ?>assets/modules/datatables/datatables.min.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="<?= BASEURL ?>assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= BASEURL ?>assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css">
 
+
     <!-- Template CSS -->
-     <link rel="stylesheet" href="<?= BASEURL ?>assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>assets/css/style.css">
     <link rel="stylesheet" href="<?= BASEURL ?>assets/css/components.css">
+
 </head>
+
 <body>
+
     <div id="app">
         <?php
         // Get the current full URL path
         $url = $_SERVER['REQUEST_URI'] ?? '';
-        $basename = basename($url); 
+        $basename = basename($url);
         ?>
 
         <?php if ($basename == 'public' || $basename == 'registerView' || $basename == 'login' || $basename == 'AuthController'): ?>
             <!-- Display login form for '/adm' -->
-             <?= $content ?>
+            <?= $content ?>
         <?php else: ?>
             <!-- Navbar -->
-             <?php 
-             include "header.php";
-             include "sidebar.php";
-             ?>
+            <?php
+            include "header.php";
+            include "sidebar.php";
+            ?>
             <!-- Main Content -->
             <?php Flasher::flash(); ?>
             <?= $content ?>
             <!-- Footer -->
-            <?php include "footer.php"; ?>
-        <?php endif; ?>
+            <?php // include "footer.php"; 
+            ?>
+        <?php endif ?>
     </div>
+
 
     <!-- General JS Scripts -->
     <script src="<?= BASEURL ?>assets/modules/jquery.min.js"></script>
@@ -53,7 +61,7 @@
     <script src="<?= BASEURL ?>assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
     <script src="<?= BASEURL ?>assets/modules/moment.min.js"></script>
     <script src="<?= BASEURL ?>assets/js/stisla.js"></script>
-    
+
     <script src="<?= BASEURL ?>assets/modules/datatables/datatables.min.js"></script>
     <script src="<?= BASEURL ?>assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
     <script src="<?= BASEURL ?>assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
@@ -67,4 +75,5 @@
     <script src="<?= BASEURL ?>assets/js/custom.js"></script>
 
 </body>
+
 </html>

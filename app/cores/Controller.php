@@ -11,7 +11,7 @@ class Controller
         require_once '../app/views/' . $view . '.php';
         $content = ob_get_clean();
 
-        require_once '../app/views/layoyuts/main.php';
+        require_once '../app/views/layouts/main.php';
     }
 
     public function model($model)
