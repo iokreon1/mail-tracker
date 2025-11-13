@@ -32,4 +32,40 @@ class AuthController extends Controller
             return $this->view('auth/login');
         }
     }
+
+    public function registerView()
+    {
+        $data = [
+            'title' => "Register"
+        ];
+        return $this->view('auth/register', $data);
+    }
+
+    public function register()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $username = $_POST['username'] ?? '';
+            $password = $_POST['password'] ?? '';
+            $name = $_POST['name'] ?? '';
+
+            $data = [
+                'username' => $username,
+                'password' => $password,
+                'name' => $name
+            ];
+
+            $result = $this->model('UsersModel')->createUser($data);
+            // var_dump($result);die;
+            if ($result['success']) {
+                $_SESSION['user'] = $result['user'];
+                header('Location: ' . BASEURL . 'DashboardController');
+                exit();
+            } else {
+                $error_message = $result['message'];
+                return $this->view('auth/register', ['error' => $error_message]);
+            }
+        } else {
+            return $this->view('auth/register');
+        }
+    }
 }
